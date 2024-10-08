@@ -65,7 +65,7 @@ router.post('/login', async (req,res)=>{
                 console.log(jwtSecretKey,"json secret key");
                 const token = jwt.sign({userId:currentuser._id},jwtSecretKey)
                 //todo Don't send the password
-                console.log("token generated");
+                console.log("token generated",token);
                 return res.status(200).json({currentuser,token})
             }
             else{
