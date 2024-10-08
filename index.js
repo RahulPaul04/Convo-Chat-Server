@@ -34,6 +34,8 @@ const io = new Server(server,{
       }
 })
 
+app.options('*', cors());
+
 app.use(cors())
 app.use(express.json())
 app.use(router)
