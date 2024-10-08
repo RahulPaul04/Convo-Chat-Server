@@ -19,7 +19,7 @@ const message = (io,socket,msg,callback) =>{
     const newmessage = new Message(msg)
     msg.serverack = true
 
-    if (msg.recipient in  connectedUsers){
+    if (msg.recipient in  connectedUsers && msg.recipient != msg.sender ){
         receipientSocket = connectedUsers[msg.recipient]
         console.log("Sending message to recipent");
         receipientSocket.emit('message',msg)
