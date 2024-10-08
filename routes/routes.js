@@ -62,6 +62,7 @@ router.post('/login', async (req,res)=>{
             const validcred = await bcrypt.compare(password,pass)
             if(validcred){
                 console.log("User Validated");
+                console.log(jwtSecretKey,"json secret key");
                 const token = jwt.sign({userId:currentuser._id},jwtSecretKey)
                 //todo Don't send the password
                 console.log("token generated");
