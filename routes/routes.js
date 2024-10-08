@@ -8,7 +8,7 @@ const authenticateToken = require('../middlewares/authentication')
 const multerMiddleware = require('../middlewares/multermiddleware')
 require('dotenv').config()
 
-jwtSecretKey = process.env.jwtSecretkey;
+const jwtSecretKey = process.env.jwtSecretkey;
 
 
 router.post('/register',multerMiddleware.single('profilephoto'),async (req,res)=>{
