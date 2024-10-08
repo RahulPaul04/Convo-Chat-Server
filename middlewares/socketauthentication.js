@@ -1,7 +1,7 @@
 const jwt = require('jsonwebtoken')
 require('dotenv').config()
 
-jwtSecretKey = process.env.jwtSecretKey
+const jwtSecretKey = process.env.jwtSecretKey
 
 
 const authenticatesocket = (socket,next) =>{
