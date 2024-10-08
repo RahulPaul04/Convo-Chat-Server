@@ -13,6 +13,8 @@ const seenAck = require('./SocketServices/seenkack')
 const addUser = require('./SocketServices/adduser')
 const userStatus = require('./SocketServices/userstatus')
 const updateStatus = require('./SocketServices/updatestatus')
+const Editmsg = require('./SocketServices/editmsg')
+const deleteMsg = require('./SocketServices/deletemsg')
 
 const connectedUsers = require('./SocketServices/connection')
 
@@ -54,6 +56,8 @@ io.on('connection', (socket) => {
     socket.on('seenack',(msgids,senderid) => seenAck(msgids,senderid))   
     socket.on('newchatuser',(userid,chatuserid)=> addUser(socket,userid,chatuserid)) 
     socket.on('getuserstatus',(id) => userStatus(socket,id))
+    socket.on('editmsg',(newmsg,msg) => Editmsg(newmsg,msg))
+    socket.on("deletemsg",(msg) => deleteMsg(msg))
 
     socket.on('disconnect',(reason) => {
         console.log("socket disconnected due to ",reason);

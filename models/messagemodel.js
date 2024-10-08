@@ -38,9 +38,20 @@ const messageSchema = new mongoose.Schema({
     seen:{
         type:Boolean,
         default:false
+    },
+    edited:{
+        type:Boolean,
+        default:false
+    },
+    deleted:{
+        type:Boolean,
+        default:false
+    },
+    timestamp:{
+        type:Date
     }
 },{
-    timestamp:true
+    timestamps: false
 })
 
 const Message = mongoose.model('Message',messageSchema)
