@@ -10,7 +10,12 @@ const updateStatus = async (id,online) => {
     }
     else{
         let lastseen = new Date()
-        await User.findByIdAndUpdate(id,{lastseen:lastseen})
+        try{
+            await User.findByIdAndUpdate(id,{lastseen:lastseen})
+        }
+        catch(err){
+            console.log("Database write Failed",err);
+        }
         update = {id:id,online:false,lastseen:lastseen}
     }
 
@@ -28,6 +33,8 @@ const updateStatus = async (id,online) => {
             socket.emit('statusupdate',update)
         }
     })
+
+    
 }
 
 module.exports = updateStatus

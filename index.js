@@ -63,6 +63,15 @@ io.on('connection', (socket) => {
         console.log("socket disconnected due to ",reason);
         updateStatus(socket.userId,false)
         delete connectedUsers[socket.userId]
+        const activeSockets = [];
+        io.sockets.sockets.forEach((socket) => {
+        activeSockets.push({
+            id: socket.id,
+            userId: socket.userId, // Assuming you store userId on socket
+            // Add any other properties you want to track
+        });
+    });
+    console.log("active sockets", activeSockets);
     })
 })
 
