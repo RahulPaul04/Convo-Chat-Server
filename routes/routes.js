@@ -64,6 +64,7 @@ router.post('/login', async (req,res)=>{
                 console.log("User Validated");
                 const token = jwt.sign({userId:currentuser._id},jwtSecretKey)
                 //todo Don't send the password
+                console.log("token generated");
                 return res.status(200).json({currentuser,token})
             }
             else{
@@ -71,6 +72,7 @@ router.post('/login', async (req,res)=>{
             }
             }
             catch(err){
+                console.log(err);
                 return res.status(500).json({msg:"Server Error"})
             }
         }
