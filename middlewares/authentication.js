@@ -11,7 +11,7 @@ const authenticateToken = (req,res,next) => {
     }
 
     try {
-        console.log(token,"authenticate here");
+        console.log(token,"authenticate here",jwtSecretKey);
         const verified = jwt.verify(token,jwtSecretKey)
         req.userId = verified
         next()
